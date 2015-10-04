@@ -1,0 +1,65 @@
+<!doctype html>
+	<html>
+		<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		</head>
+		<body>
+		<center>
+		<br>
+		<br>
+		Tip Calculator: 
+		Make Sure to put the number of <strong>paying</strong> customers <br>and do not include a percent sign
+			<br>
+			<br>
+			Bill: <input id="bill" type="float">
+			<br>
+			Percent Tipped: <input id="percent" type="integer">
+			<br>
+			Number of people: <input id="numOfPeople" type="integer">
+			<br>
+			<br>
+			<button id="biller">Calculate Tip</button>
+			<br>
+			<br>
+			Calculate what percent you tipped
+			<br>
+			Bill: <input id="billed" type="float">
+			<br>
+			Amount tipped: <input id="amounttipped" type="float">
+			<br>
+			<button id="tippercent">Calculate percent</button>
+
+
+
+		<script type="text/javascript">
+		$("button#biller").click(function(){
+		var bill= $("input#bill").val();
+		var percent= $("input#percent").val();
+		var numOfPeople= $("input#numOfPeople").val();
+		percent=percent/100;
+		percent+=1;
+		var totalbill= bill*percent; 
+		var billperperson= totalbill/numOfPeople;
+		billperperson=billperperson*100;
+		var rounded=Math.round(billperperson);
+		rounded=rounded/100;
+		var tip=rounded-bill/numOfPeople;		
+		tip=Math.round(100*tip)/100;
+			
+			alert("Each person should tip $"+tip+ " and pay $"+rounded + " including tip.");
+				});
+		$("button#tippercent").click(function(){
+		var bill= $("input#billed").val();
+		var tipped= $("input#amounttipped").val();
+		var percent=100*tipped/bill;
+		 
+		percent=percent*10;
+		percent=Math.round(percent);
+		percent=percent/10;
+			
+			alert("You tipped " + percent + "%");
+				});
+		</script>
+			</center>
+		</body>
+	</html>
